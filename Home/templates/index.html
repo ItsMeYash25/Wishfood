@@ -1,0 +1,55 @@
+{% extends 'extras/base.html' %}
+{% block title %}Wishfood{% endblock title %}
+{% load static %}
+{% block content %}
+
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="text-center">
+        <h2>Table Reservation</h2>
+    </div><hr>
+    <div class="card-body" id="tablereserver">
+       {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="Date">Enter Date: </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="date" name="date" placeholder="Date.." required>
+        </div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="Time">Enter Time: </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="time" min="09:00" max="22:00" name="time" placeholder="Time.." required>
+        </div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="Time">Enter Party size: </label>
+        <div class="col-sm-10">
+          <select class="custom-select" name="member" required>
+                      <option value="1">1 Person</option>
+                      <option value="2">2 Person</option>
+                      <option value="3">3 Person</option>
+                      <option value="4">4 Person</option>
+                      <option value="5">5 Person</option>
+                      <option value="6">6 Person</option>
+                  </select>
+        </div>
+			</div>
+    </div><hr>
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-secondary add-btn">Reserve</button>        
+    </div>
+    </form>
+</div>
+{% endblock content %}
+

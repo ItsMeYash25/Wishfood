@@ -1,0 +1,32 @@
+{% extends 'extras/base.html' %}
+{% block title %}Wishfood:Store{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+    <div class="row">
+
+	<div class="col-sm">
+	<div class="list-group">
+        <a href="{% url 'store' %}" class="list-group-item list-group-item-action">All-Food</a>
+        {% for categories in category %}
+        <a href="../store/?categories={{categories.id}}" class="list-group-item list-group-item-action">{{categories.name}}</a>
+        {% endfor %}
+      </div>
+	</div>
+	</div>
+	<div class="row mx-auto">
+		{% for product in products %}
+			<div class="col-lg-4">
+				<img class="thumbnail" src="{{product.imgURL}}">
+				<div class="box-element product">
+					<h6><strong>{{product}}</strong></h6>
+					<hr>
+					<button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+					<h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock content %}
+
