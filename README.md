@@ -1,6 +1,6 @@
 # Wishfood
 
-To run this project follow below commands:
+To run this project follow the given commands:
 1) Create Virtual Environment => python -m venv venv
 2) Activate the environment => <br>
     On Unix or MacOS, using the bash shell: source /path/to/venv/bin/activate<br>
